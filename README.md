@@ -3,3 +3,4 @@ An addon for Kodi (XBMC) which monitors video and music playback.  It allows use
 
 Features:
 - Autostop setting from 5 - 60 minutes in 5 minute intervals
+- Automatically engage Kodi screensaver when stopping paused playback.
