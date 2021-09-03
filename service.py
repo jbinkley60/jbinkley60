@@ -9,6 +9,7 @@ pos = 0
 file = ''
 count = 0 
 pacount = 0
+plcount = 0
 
 xbmc.log("Autostop addon service started." , xbmc.LOGINFO)
 
@@ -23,28 +24,34 @@ class XBMCPlayer(xbmc.Player):
     
     def __init__(self, *args):
         self.paflag = 0
+        self.plflag = 0
         pass
  
     def onPlayBackStarted(self):
         file = xbmc.Player().getPlayingFile()
         self.paflag = 0
+        self.plflag = 1
  
     def onPlayBackPaused(self):
         xbmc.log("Autostop playback paused" , xbmc.LOGDEBUG)
         self.paflag = 1
+        self.plflag = 0
  
     def onPlayBackResumed(self):
         file = self.getPlayingFile()
         xbmc.log("Autostop playback resumed" , xbmc.LOGDEBUG)
         self.paflag = 0
+        self.plflag = 1
  
     def onPlayBackEnded(self):
         xbmc.log("Autostop playback ended" , xbmc.LOGDEBUG)
         pos = 0
         self.paflag = 0
+        self.plflag = 0
  
     def onPlayBackStopped(self):
         self.paflag = 0
+        self.plflag = 0
 
              
 player = XBMCPlayer()
@@ -54,9 +61,9 @@ monitor = xbmc.Monitor()
 while True:
 
     pacount += 1 
-    if pacount % 30 == 0:                          # Check for paused video every 30 seconds
+    if pacount % 10 == 0:                          # Check for paused video every 10 seconds
         pastoptime = int(settings('pastop'))
-        xbmc.log('Autostop count and stop time ' + str(pacount) + ' ' + str(pastoptime) +    \
+        xbmc.log('Autostop pause count and stop time ' + str(pacount) + ' ' + str(pastoptime) +    \
         ' ' + str(player.paflag), xbmc.LOGDEBUG)
         if pastoptime > 0 and pacount >= pastoptime * 60 and player.paflag == 1:
             ptag = xbmc.Player().getVideoInfoTag()
@@ -71,6 +78,25 @@ while True:
                 xbmc.executebuiltin('ActivateScreensaver')
         elif player.paflag == 0:
             pacount = 0
+
+    plcount += 1 
+    if plcount % 10 == 0:                          # Check for playing video every 10 seconds
+        plstoptime = int(settings('plstop'))
+        xbmc.log('Autostop play count and stop time ' + str(plcount) + ' ' + str(plstoptime) +    \
+        ' ' + str(player.plflag), xbmc.LOGDEBUG)
+        if plstoptime > 0 and plcount >= plstoptime * 60 and player.plflag == 1:
+            ptag = xbmc.Player().getVideoInfoTag()
+            ptitle = ptag.getTitle()
+            pos = xbmc.Player().getTime()
+            xbmc.Player().stop()
+            plcount = 0
+            mgenlog ='Autostop stopped current playback: ' + ptitle +     \
+            ' at: ' + time.strftime("%H:%M:%S", time.gmtime(pos))
+            xbmc.log(mgenlog, xbmc.LOGINFO)
+            if settings('screensaver') == 'true':  #  Active screensaver if option selected
+                xbmc.executebuiltin('ActivateScreensaver')
+        elif player.plflag == 0:
+            plcount = 0
 
 
     if monitor.waitForAbort(1): # Sleep/wait for abort for 1 second.

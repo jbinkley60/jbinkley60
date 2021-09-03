@@ -1,2 +1,5 @@
 0.0.1.1:
 - Initial Alpha release for Kodi 19
+
+0.0.1.2
+-  Added autostopping playing music or video

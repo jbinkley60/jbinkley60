@@ -28,10 +28,18 @@ msgctxt "#30302"
 msgid "Activate Screensaver"
 msgstr ""
 
+msgctxt "#30303"
+msgid "Stop Playback Minutes"
+msgstr ""
+
 msgctxt "#30501"
 msgid "Automatically stop paused video or music in minutes.  0 = never automatically stop paused playback."
 msgstr ""
 
 msgctxt "#30502"
 msgid "Activate Kodi screensaver when addon autostops paused playback."
+msgstr ""
+
+msgctxt "#30503"
+msgid "Automatically stop playing video or music in minutes.  0 = never automatically stop playback."
 msgstr ""
