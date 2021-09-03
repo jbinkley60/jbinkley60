@@ -71,7 +71,7 @@ while True:
             pos = xbmc.Player().getTime()
             xbmc.Player().stop()
             pacount = 0
-            mgenlog ='Autostop stopped paused playback: ' + ptitle +     \
+            mgenlog ='Autostop paused playback: ' + ptitle +     \
             ' at: ' + time.strftime("%H:%M:%S", time.gmtime(pos))
             xbmc.log(mgenlog, xbmc.LOGINFO)
             if settings('screensaver') == 'true':  #  Active screensaver if option selected
@@ -90,7 +90,7 @@ while True:
             pos = xbmc.Player().getTime()
             xbmc.Player().stop()
             plcount = 0
-            mgenlog ='Autostop stopped current playback: ' + ptitle +     \
+            mgenlog ='Autostop current playback: ' + ptitle +     \
             ' at: ' + time.strftime("%H:%M:%S", time.gmtime(pos))
             xbmc.log(mgenlog, xbmc.LOGINFO)
             if settings('screensaver') == 'true':  #  Active screensaver if option selected
