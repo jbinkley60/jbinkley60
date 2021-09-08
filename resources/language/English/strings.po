@@ -29,7 +29,7 @@ msgid "Activate Screensaver"
 msgstr ""
 
 msgctxt "#30303"
-msgid "Stop Playback Minutes"
+msgid "Sleep Timer Minutes"
 msgstr ""
 
 msgctxt "#30501"

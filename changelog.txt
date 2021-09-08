@@ -3,3 +3,8 @@
 
 0.0.1.2
 -  Added autostopping playing music or video
+
+0.0.1.3
+-  Increased sleep timer to 120 minutes maximum
+-  Added the ability to increment sleep timer value
+   by calling addon from favourites or keyboard.xml.

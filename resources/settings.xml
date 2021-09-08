@@ -31,18 +31,14 @@
 					<constraints>
 						<options>
 							<option>0</option>
-							<option>5</option>
-                                                        <option>10</option>
-                                                        <option>15</option>
+							<option>10</option>
                                                         <option>20</option>
-                                                        <option>25</option>
                                                         <option>30</option>
-                                                        <option>35</option>
                                                         <option>40</option>
-                                                        <option>45</option>
                                                         <option>50</option>
-                                                        <option>55</option>
                                                         <option>60</option>
+                                                        <option>90</option>
+                                                        <option>120</option>
 						</options>
 					</constraints>
 					<control type="spinner" format="string"/>
